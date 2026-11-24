@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="SplatTok compresses existing 3D Gaussian splats 75-110x by encoding whole scenes into compact latent tokens and regenerating a standard splat, without needing the original training images.">
+  <meta property="og:title" content="SplatTok: Data-Driven Compression of 3D Gaussian Splats with Scene-Level Tokens" />
+  <meta property="og:description" content="SplatTok compresses existing 3D Gaussian splats 75-110x by encoding whole scenes into compact latent tokens and regenerating a standard splat, without needing the original training images." />
+  <meta property="og:url" content="https://karthikey97.github.io/splattok/" />
+  <meta property="og:image" content="https://karthikey97.github.io/splattok/static/teaser.png" />
+  <meta name="keywords" content="3D Gaussian splatting, compression, tokenization, neural codec, scene representation">
+
+  <title>SplatTok: Data-Driven Compression of 3D Gaussian Splats</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="../nmc/static/css/bulma.min.css">
+  <link rel="stylesheet" href="../nmc/static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="../nmc/static/css/index.css">
+  <script defer src="../nmc/static/js/fontawesome.all.min.js"></script>
+</head>
+
+<body>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">SplatTok: Data-Driven Compression of 3D Gaussian Splats with Scene-Level Tokens</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><a href="../index.html">Sai Karthikey Pentapati</a><sup>1</sup>,</span>
+              <span class="author-block">Shashank Nelamangala Sridhara<sup>2</sup>,</span>
+              <span class="author-block">Birendra Kathariya<sup>2</sup>,</span>
+              <span class="author-block">Peng Yin<sup>2</sup>,</span>
+              <span class="author-block">Guandao Yang<sup>1</sup>,</span>
+              <span class="author-block"><a href="https://www.ece.utexas.edu/people/faculty/alan-bovik" target="_blank">Alan C. Bovik</a><sup>3</sup></span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>The University of Texas at Austin &nbsp;&nbsp; <sup>2</sup>Dolby Laboratories &nbsp;&nbsp; <sup>3</sup>University of Colorado Boulder</span>
+            </div>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><strong>Under review</strong></span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a class="external-link button is-normal is-rounded is-dark" disabled title="Coming soon">
+                    <span class="icon"><i class="ai ai-arxiv"></i></span>
+                    <span>arXiv (coming soon)</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a class="external-link button is-normal is-rounded is-dark" disabled title="Coming soon">
+                    <span class="icon"><i class="fab fa-github"></i></span>
+                    <span>Code (coming soon)</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Teaser -->
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <img src="static/teaser.png" alt="teaser" style="width:100%;">
+        <h2 class="subtitle has-text-centered" style="margin-top:0.75rem;font-size:1rem;">Method overview. The input splat is partitioned into anchors (clusters of nearby Gaussians). A transformer encoder, alternating local and global self-attention, summarizes each anchor into a fixed number of latent tokens, and a shared decoder spawns a new set of Gaussians around each anchor. At encode time, a quantization-aware latent search refines only the tokens with both networks frozen, and the quantized tokens are entropy coded into the bitstream.</h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- Abstract -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>3D Gaussian splats enable real-time rendering but require substantial storage. Existing compression methods either encode the primitives of a given splat or optimize a compact representation independently for each scene. Yet a Gaussian splat is only one realization of a scene: different arrangements of primitives can produce nearly identical rendered views. We exploit this freedom on the decoding side with SplatTok, a learned scene-resynthesis codec. Trained across thousands of real-world scenes, a transformer encodes an existing splat into compact, spatially anchored latent tokens, and a shared decoder synthesizes a new set of standard Gaussian primitives without preserving correspondence to the input. The representation is learned through rendering supervision rather than primitive reconstruction. At compression time, a quantization-aware latent search refines only the scene code, keeping the networks frozen, and closes most of the encoder&rsquo;s remaining error. On standard benchmarks, using only renders of the input splat for the latent search, without the original training images, SplatTok matches the PSNR of the feed-forward codec FCGS with 4 to 6.5 times smaller files, compressing input splats about 75 to 110 times. With the training images, it exceeds the PSNR of the per-scene method HAC++ with 13 to 41% smaller files. A single model trained on DL3DV generalizes to unseen scenes with millions of Gaussians and supports multiple target rates without retraining.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Motivation</h2>
+          <div class="content has-text-justified">
+            <p>3D Gaussian splats render photorealistic scenes in real time, but a single scene often takes hundreds of megabytes to over a gigabyte &mdash; too large to stream to a headset or phone, or to store by the thousands. The most compact existing methods rebuild every scene from scratch using its original training photos, which takes tens of minutes per scene and often yields a format that needs its own renderer. Fast feed-forward codecs keep the standard format and need no photos, but code each Gaussian individually and only shrink files 10&ndash;30&times;. Yet a splat is just one of many arrangements of Gaussians that render the same scene. SplatTok learns how scenes are structured from thousands of real-world captures, compresses a whole splat into a compact set of tokens, and regenerates a fresh, standard splat from them &mdash; reaching per-scene compression ratios without the original images.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Results</h2>
+      <figure class="has-text-centered">
+        <img src="static/results_plot.png" alt="Results" style="width:100%;">
+        <figcaption class="has-text-justified" style="margin-top:0.75rem;font-size:0.95rem;color:#4a4a4a;">PSNR (dB) against file size per scene (MB, log scale) on Mip-NeRF 360, Tanks and Temples, and Deep Blending. With the training images as the target of its latent search, SplatTok outperforms HAC++ and KISS-GS on all three datasets. With only renders of the input splat as the target, it still lies above HAC++, which uses the training images.</figcaption>
+      </figure>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Qualitative Comparison</h2>
+      <figure class="has-text-centered">
+        <img src="static/results_qual.jpg" alt="Qualitative Comparison" style="width:100%;">
+        <figcaption class="has-text-justified" style="margin-top:0.75rem;font-size:0.95rem;color:#4a4a4a;">Mip-NeRF 360 at a high rate (left: flowers, bicycle) and a low rate (right: counter, room). For each scene: the ground-truth image, then zoomed-in crops of ground truth, SplatTok, and HAC++. SplatTok better preserves foliage, oblique surfaces, and thin structures at both rates.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8 has-text-centered">
+          <div class="content">
+            <p>
+              <a href="../index.html">Back to homepage</a><br>
+              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template"
+                target="_blank">Academic Project Page Template</a>, adapted from the <a
+                href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+              Licensed under <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

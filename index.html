@@ -94,6 +94,37 @@
         </tbody></table>
 
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+          <tr onmouseout="splattok_stop()" onmouseover="splattok_start()">
+            <td style="padding:20px;width:25%;vertical-align:middle">
+              <div class="one">
+                <div class="two" id='splattok_image'>
+                  <img src='images/splattok_2.png' width="160"></div>
+                <img src='images/splattok_1.png' width="160">
+              </div>
+              <script type="text/javascript">
+                function splattok_start() {
+                  document.getElementById('splattok_image').style.opacity = "1";
+                }
+
+                function splattok_stop() {
+                  document.getElementById('splattok_image').style.opacity = "0";
+                }
+                splattok_stop()
+              </script>
+            </td>
+            <td style="padding:20px;width:75%;vertical-align:middle">
+              <a href="https://karthikey97.github.io/splattok/">
+                <papertitle>SplatTok: Data-Driven Compression of 3D Gaussian Splats with Scene-Level Tokens</papertitle>
+              </a>
+              <br>
+              <strong>Sai Karthikey Pentapati</strong>, Shashank Nelamangala Sridhara, Birendra Kathariya, Peng Yin, Guandao Yang, Alan C. Bovik
+              <br>
+              <em>Under review</em>
+              <br>
+              <a href="https://karthikey97.github.io/splattok/">website</a> / paper (coming soon) / code (coming soon)
+            </td>
+          </tr>
+
           <tr onmouseout="varlen_stop()" onmouseover="varlen_start()">
             <td style="padding:20px;width:25%;vertical-align:middle">
               <div class="one">
