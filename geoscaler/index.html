@@ -102,13 +102,20 @@
     </div>
   </section>
 
-  <section class="section hero is-light">
+  <section class="section">
     <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered">Motivation</h2>
-      <figure class="has-text-centered">
-        <img src="static/motivation.png" alt="Motivation" style="width:100%;max-width:720px;">
-        <figcaption class="has-text-justified" style="margin-top:0.75rem;font-size:0.95rem;color:#4a4a4a;">The texture map (left) of a mesh (middle) contains many seams, and its UV parameterization warps different regions by different amounts (right; the ratio of each triangle's 3D area to its UV area). Standard image resamplers ignore both, blurring across seams and treating all texels as equally important.</figcaption>
-      </figure>
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Motivation</h2>
+          <div class="content has-text-justified">
+            <p>High-resolution textures make 3D objects look real but are too heavy for real-time rendering on headsets and phones, so developers shrink them with standard image resizing such as bicubic or Lanczos. Those methods treat a texture as a flat photo. They blur across the seams where the texture is cut apart, ignore that some regions are stretched or squeezed when wrapped onto the 3D surface, and optimize the texture's pixels rather than what the viewer actually sees. GeoScaler downsamples with the mesh's geometry in mind and directly optimizes the quality of rendered views.</p>
+          </div>
+          <figure class="has-text-centered" style="margin-top:1.25rem;">
+            <img src="static/motivation.png" alt="Motivation" style="width:100%;max-width:720px;">
+            <figcaption class="has-text-justified" style="margin-top:0.75rem;font-size:0.95rem;color:#4a4a4a;">The texture map (left) of a mesh (middle) contains many seams, and its UV parameterization warps different regions by different amounts (right; the ratio of each triangle's 3D area to its UV area).</figcaption>
+          </figure>
+        </div>
+      </div>
     </div>
   </section>
   <section class="section">

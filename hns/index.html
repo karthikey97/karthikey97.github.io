@@ -94,6 +94,18 @@
     </div>
   </section>
 
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Motivation</h2>
+          <div class="content has-text-justified">
+            <p>Triangle meshes are still the standard 3D format across graphics, games, and VR/AR, and storing and streaming them compactly matters more as 3D content grows. Neural compression works very well, but most of it targets implicit surfaces: the network wastes capacity on empty space, and turning the result back into a mesh is slow and leaves artifacts. Methods that map the mesh onto a sphere can output meshes directly but suffer from warping. HNS encodes the shape in two levels on the sphere, a tiny network for the coarse shape and a second one for fine detail, and focuses training where warping is worst. The result decodes to a mesh of any resolution in real time.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
   <section class="section hero is-light">
     <div class="container is-max-desktop">
       <h2 class="title is-3 has-text-centered">Results</h2>
