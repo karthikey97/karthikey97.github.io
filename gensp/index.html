@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="GenSP learns consistent spherical parameterizations across a collection of genus-0 shapes by learning a neural shape generative model.">
+  <meta property="og:title" content="GenSP: Consistent Spherical Parameterization via Learning Shape Generative Models" />
+  <meta property="og:description" content="GenSP learns consistent spherical parameterizations across a collection of genus-0 shapes by learning a neural shape generative model." />
+  <meta property="og:url" content="https://karthikey97.github.io/gensp/" />
+  <meta property="og:image" content="https://karthikey97.github.io/gensp/static/teaser.png" />
+  <meta name="keywords" content="spherical parameterization, neural geometry processing, generative models, shape correspondence, ECCV 2026">
+
+  <title>GenSP: Consistent Spherical Parameterization</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="../nmc/static/css/bulma.min.css">
+  <link rel="stylesheet" href="../nmc/static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="../nmc/static/css/index.css">
+  <script defer src="../nmc/static/js/fontawesome.all.min.js"></script>
+</head>
+
+<body>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">GenSP: Consistent Spherical Parameterization via Learning Shape Generative Models</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><a href="../index.html">Sai Karthikey Pentapati</a><sup>1*</sup>,</span>
+              <span class="author-block">Shashank Gupta<sup>1*</sup>,</span>
+              <span class="author-block">Rajesh Sureddi<sup>1</sup>,</span>
+              <span class="author-block">Yuezhi Yang<sup>1</sup>,</span>
+              <span class="author-block"><a href="https://www.ece.utexas.edu/people/faculty/alan-bovik" target="_blank">Alan C. Bovik</a><sup>2</sup>,</span>
+              <span class="author-block"><a href="https://www.cs.utexas.edu/~huangqx/" target="_blank">Qixing Huang</a><sup>1</sup></span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>The University of Texas at Austin &nbsp;&nbsp; <sup>2</sup>University of Colorado Boulder<br><span style="font-size:0.9rem;"><sup>*</sup>Equal contribution</span></span>
+            </div>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><strong>ECCV 2026</strong></span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="https://arxiv.org/pdf/2607.00492" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2607.00492" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="ai ai-arxiv"></i></span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a class="external-link button is-normal is-rounded is-dark" disabled title="Coming soon">
+                    <span class="icon"><i class="fab fa-github"></i></span>
+                    <span>Code (coming soon)</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Teaser -->
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <img src="static/teaser.png" alt="teaser" style="width:100%;">
+        <h2 class="subtitle has-text-centered" style="margin-top:0.75rem;font-size:1rem;">A texture defined on an icosphere is mapped onto each shape through its spherical parameterization. Existing methods are either inconsistent across similar shapes (SMAT, AHSP) or highly distorted in thin and high-curvature regions (CMCF). GenSP produces consistent, feature-preserving parameterizations across the collection.</h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- Abstract -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>We introduce GenSP, a data-driven framework that learns consistent spherical parameterizations across a collection of genus-0 shapes. Instead of optimizing the parameterization of each shape independently, our method learns a neural generative model that predicts a continuous mapping from the unit sphere to shapes in a dataset. Under this formulation, spherical parameterizations are obtained through the inverse mappings of the learned generator, which encourages similar shapes to share consistent parameterizations. To make this formulation practical, we address several key challenges in learning such a generative model. First, we introduce a continuous neural deformation model that predicts surface points from sphere coordinates and latent shape codes, avoiding discretization artifacts common in mesh-based formulations. Second, we augment the training space with intermediate shapes that bridge the sphere and input shapes, allowing the model to learn meaningful deformations across a heterogeneous shape collection. Third, we compute reliable initial correspondences by propagating mappings along a spanning tree of training shapes in the latent space. Experiments on the ShapeNet dataset demonstrate that our approach significantly reduces geometric distortion and improves cross-shape consistency compared with state-of-the-art spherical parameterization methods.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Method Overview</h2>
+      <figure class="has-text-centered">
+        <img src="static/overview.png" alt="Method Overview" style="width:100%;">
+        <figcaption class="has-text-justified" style="margin-top:0.75rem;font-size:0.95rem;color:#4a4a4a;">GenSP works in four stages: (1) augment the training set with intermediate shapes between the sphere and each input shape; (2) learn an implicit shape space where the sphere sits at the origin and similar shapes have nearby latents; (3) propagate icosphere connectivity along a minimum spanning tree in latent space to get consistent sphere-to-shape correspondences; (4) train a continuous mesh generator initialized from these correspondences, regularizing its Jacobian to keep the mapping low-distortion.</figcaption>
+      </figure>
+    </div>
+  </section>
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Results</h2>
+      <figure class="has-text-centered">
+        <img src="static/results.png" alt="Results" style="width:100%;">
+        <figcaption class="has-text-justified" style="margin-top:0.75rem;font-size:0.95rem;color:#4a4a4a;">Spherical parameterizations of similar shapes from GenSP and baselines (AHSP, SMAT, CMCF). Top row of each block: the mapping from the shape to the sphere; bottom row: the mapping from the sphere back to the shape. GenSP is more consistent across shapes and better preserves high-curvature features.</figcaption>
+      </figure>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Quantitative Comparison</h2>
+      <figure class="has-text-centered">
+        <img src="static/table.png" alt="Quantitative Comparison" style="width:100%;max-width:720px;">
+        <figcaption class="has-text-justified" style="margin-top:0.75rem;font-size:0.95rem;color:#4a4a4a;">Held-out ShapeNet test set, compared with CMCF, ARAP, AHSP, SMAT and VC25: mean and max isometric distortion, conformal distortion, and cross-shape consistency of the parameterizations (lower is better), plus run-time. Bottom rows are ablations: no data augmentation (No-DA), matching the sphere to each shape directly instead of along a path of training shapes (No-GP), and no regularization losses (No-GR).</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- BibTeX -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@inproceedings{pentapati2026gensp,
+  title     = {GenSP: Consistent Spherical Parameterization via Learning Shape Generative Models},
+  author    = {Pentapati, Sai Karthikey and Gupta, Shashank and Sureddi, Rajesh and Yang, Yuezhi and Bovik, Alan C. and Huang, Qixing},
+  booktitle = {European Conference on Computer Vision (ECCV)},
+  year      = {2026}
+}</code></pre>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8 has-text-centered">
+          <div class="content">
+            <p>
+              <a href="../index.html">Back to homepage</a><br>
+              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template"
+                target="_blank">Academic Project Page Template</a>, adapted from the <a
+                href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+              Licensed under <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

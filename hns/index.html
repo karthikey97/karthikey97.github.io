@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Compact hierarchical implicit neural representations of genus-0 meshes built on spherical parameterization, decodable to meshes of any resolution in real time.">
+  <meta property="og:title" content="Hierarchical Neural Surfaces for 3D Mesh Compression" />
+  <meta property="og:description" content="Compact hierarchical implicit neural representations of genus-0 meshes built on spherical parameterization, decodable to meshes of any resolution in real time." />
+  <meta property="og:url" content="https://karthikey97.github.io/hns/" />
+  <meta property="og:image" content="https://karthikey97.github.io/hns/static/teaser.png" />
+  <meta name="keywords" content="mesh compression, implicit neural representations, spherical parameterization, neural geometry processing, PCS 2025">
+
+  <title>Hierarchical Neural Surfaces for 3D Mesh Compression</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="../nmc/static/css/bulma.min.css">
+  <link rel="stylesheet" href="../nmc/static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="../nmc/static/css/index.css">
+  <script defer src="../nmc/static/js/fontawesome.all.min.js"></script>
+</head>
+
+<body>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Hierarchical Neural Surfaces for 3D Mesh Compression</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><a href="../index.html">Sai Karthikey Pentapati</a><sup>1</sup>,</span>
+              <span class="author-block">Gregoire Phillips<sup>2</sup>,</span>
+              <span class="author-block"><a href="https://www.ece.utexas.edu/people/faculty/alan-bovik" target="_blank">Alan C. Bovik</a><sup>1</sup></span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>The University of Texas at Austin &nbsp;&nbsp; <sup>2</sup>Ericsson Research, Santa Clara</span>
+            </div>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><strong>Picture Coding Symposium (PCS) 2025</strong></span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="https://arxiv.org/pdf/2512.15985" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2512.15985" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="ai ai-arxiv"></i></span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://github.com/karthikey97/HierarchicalNeuralSurfaces" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fab fa-github"></i></span>
+                    <span>Code</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Teaser -->
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <img src="static/teaser.png" alt="teaser" style="width:100%;">
+        <h2 class="subtitle has-text-centered" style="margin-top:0.75rem;font-size:1rem;">Method overview. A mesh is mapped to the unit sphere; a tiny INR models the map from the sphere to a smoothed coarse shape, and a second INR encodes the displacement field that restores fine detail. The two sets of network weights are the compressed representation (here 81.6 KB, 14&times; smaller), and a mesh of any resolution is decoded by pushing an icosphere through both networks.</h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- Abstract -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>Implicit Neural Representations (INRs) have been demonstrated to achieve state-of-the-art compression of a broad range of modalities such as images, videos, 3D surfaces, and audio. Most studies have focused on building neural counterparts of traditional implicit representations of 3D geometries, such as signed distance functions. However, the triangle mesh-based representation of geometry remains the most widely used representation in the industry, while building INRs capable of generating them has been sparsely studied. In this paper, we present a method for building compact INRs of zero-genus 3D manifolds. Our method relies on creating a spherical parameterization of a given 3D mesh &mdash; mapping the surface of a mesh to that of a unit sphere &mdash; then constructing an INR that encodes the displacement vector field defined continuously on its surface that regenerates the original shape. The compactness of our representation can be attributed to its hierarchical structure, wherein it first recovers the coarse structure of the encoded surface before adding high-frequency details to it. Once the INR is computed, 3D meshes of arbitrary resolution/connectivity can be decoded from it. The decoding can be performed in real time while achieving a state-of-the-art trade-off between reconstruction quality and the size of the compressed representations.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Results</h2>
+      <figure class="has-text-centered">
+        <img src="static/results.png" alt="Results" style="width:100%;">
+        <figcaption class="has-text-justified" style="margin-top:0.75rem;font-size:0.95rem;color:#4a4a4a;">Reconstructions across a range of bitrates (Armadillo 22&times;, XYZ dragon 35&times;, Boot 6&times;). QNDF shows visible quantization artifacts, SNS suffers from warping, and QS-DRC (QSlim + Draco) produces very low-resolution meshes.</figcaption>
+      </figure>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Quantitative Comparison</h2>
+      <figure class="has-text-centered">
+        <img src="static/table.png" alt="Quantitative Comparison" style="width:100%;max-width:720px;">
+        <figcaption class="has-text-justified" style="margin-top:0.75rem;font-size:0.95rem;color:#4a4a4a;">Mean point-to-mesh error (&times;10<sup>4</sup>) and normal error (&deg;) over 15 Thingi10K meshes compressed to four target sizes. NQ denotes results without parameter quantization.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- BibTeX -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@inproceedings{pentapati2025hns,
+  title     = {Hierarchical Neural Surfaces for 3D Mesh Compression},
+  author    = {Pentapati, Sai Karthikey and Phillips, Gregoire and Bovik, Alan C.},
+  booktitle = {Picture Coding Symposium (PCS)},
+  year      = {2025}
+}</code></pre>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8 has-text-centered">
+          <div class="content">
+            <p>
+              <a href="../index.html">Back to homepage</a><br>
+              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template"
+                target="_blank">Academic Project Page Template</a>, adapted from the <a
+                href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+              Licensed under <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
