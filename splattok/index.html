@@ -121,6 +121,106 @@
       </figure>
     </div>
   </section>
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Videos</h2>
+      <p class="has-text-centered" style="color:#4a4a4a;">Renders along a camera path from the input splat and from SplatTok reconstructions with 8-bit and 6-bit tokens. Videos in each row play in sync.</p>
+        <h3 class="title is-5" style="margin:1.5rem 0 0.5rem;">Bicycle (Mip-NeRF 360)</h3>
+        <div class="columns is-variable is-2 video-row">
+          <div class="column has-text-centered">
+            <video muted loop playsinline preload="none" poster="static/videos/bicycle_input_poster.jpg" style="width:100%;border-radius:4px;">
+              <source src="static/videos/bicycle_input.mp4" type="video/mp4">
+            </video>
+            <p style="font-size:0.95rem;margin-top:0.25rem;">Input splat</p>
+          </div>
+          <div class="column has-text-centered">
+            <video muted loop playsinline preload="none" poster="static/videos/bicycle_8bit_poster.jpg" style="width:100%;border-radius:4px;">
+              <source src="static/videos/bicycle_8bit.mp4" type="video/mp4">
+            </video>
+            <p style="font-size:0.95rem;margin-top:0.25rem;">SplatTok (8-bit)</p>
+          </div>
+          <div class="column has-text-centered">
+            <video muted loop playsinline preload="none" poster="static/videos/bicycle_6bit_poster.jpg" style="width:100%;border-radius:4px;">
+              <source src="static/videos/bicycle_6bit.mp4" type="video/mp4">
+            </video>
+            <p style="font-size:0.95rem;margin-top:0.25rem;">SplatTok (6-bit)</p>
+          </div>
+        </div>
+        <h3 class="title is-5" style="margin:1.5rem 0 0.5rem;">Garden (Mip-NeRF 360)</h3>
+        <div class="columns is-variable is-2 video-row">
+          <div class="column has-text-centered">
+            <video muted loop playsinline preload="none" poster="static/videos/garden_input_poster.jpg" style="width:100%;border-radius:4px;">
+              <source src="static/videos/garden_input.mp4" type="video/mp4">
+            </video>
+            <p style="font-size:0.95rem;margin-top:0.25rem;">Input splat</p>
+          </div>
+          <div class="column has-text-centered">
+            <video muted loop playsinline preload="none" poster="static/videos/garden_8bit_poster.jpg" style="width:100%;border-radius:4px;">
+              <source src="static/videos/garden_8bit.mp4" type="video/mp4">
+            </video>
+            <p style="font-size:0.95rem;margin-top:0.25rem;">SplatTok (8-bit)</p>
+          </div>
+          <div class="column has-text-centered">
+            <video muted loop playsinline preload="none" poster="static/videos/garden_6bit_poster.jpg" style="width:100%;border-radius:4px;">
+              <source src="static/videos/garden_6bit.mp4" type="video/mp4">
+            </video>
+            <p style="font-size:0.95rem;margin-top:0.25rem;">SplatTok (6-bit)</p>
+          </div>
+        </div>
+    </div>
+  </section>
+
+  <script>
+  // Each row: load + play only while visible; keep the row's videos in sync with the first one.
+  (function () {
+    var rows = document.querySelectorAll('.video-row');
+    function startRow(row) {
+      var vids = row.querySelectorAll('video');
+      vids.forEach(function (v) { if (v.preload !== 'auto') { v.preload = 'auto'; v.load(); } });
+      var ready = 0;
+      vids.forEach(function (v) {
+        if (v.readyState >= 3) { ready++; return; }
+        v.addEventListener('canplay', function once() { v.removeEventListener('canplay', once); if (++ready === vids.length) playAll(); });
+      });
+      if (ready === vids.length) playAll();
+      function playAll() { vids.forEach(function (v) { v.currentTime = vids[0].currentTime; var p = v.play(); if (p) p.catch(function(){}); }); }
+    }
+    function stopRow(row) { row.querySelectorAll('video').forEach(function (v) { v.pause(); }); }
+    rows.forEach(function (row) {
+      var vids = row.querySelectorAll('video'), master = vids[0];
+      master.addEventListener('timeupdate', function () {
+        if (master.paused || master.seeking) return;
+        for (var i = 1; i < vids.length; i++) {
+          var v = vids[i];
+          if (v.seeking || v.readyState < 3) continue;
+          var d = master.currentTime - v.currentTime;
+          if (Math.abs(d) > master.duration / 2) continue;      // one of them just looped
+          if (Math.abs(d) > 0.25) v.currentTime = master.currentTime;
+        }
+      });
+    });
+    // Only the row nearest the middle of the screen plays (keeps bandwidth to one row at a time).
+    var active = null;
+    function pick() {
+      var mid = window.innerHeight / 2, best = null, bestD = Infinity;
+      rows.forEach(function (r) {
+        var b = r.getBoundingClientRect();
+        if (b.bottom < 0 || b.top > window.innerHeight) return;
+        var d = Math.abs((b.top + b.bottom) / 2 - mid);
+        if (d < bestD) { bestD = d; best = r; }
+      });
+      if (best === active) return;
+      if (active) stopRow(active);
+      active = best;
+      if (active) startRow(active);
+    }
+    var queued = false;
+    function onScroll() { if (!queued) { queued = true; requestAnimationFrame(function () { queued = false; pick(); }); } }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    pick();
+  })();
+  </script>
 
 
 
