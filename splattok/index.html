@@ -97,7 +97,7 @@
         <div class="column is-four-fifths">
           <h2 class="title is-3">Motivation</h2>
           <div class="content has-text-justified">
-            <p>3D Gaussian splats render photorealistic scenes in real time, but a single scene often takes hundreds of megabytes to over a gigabyte &mdash; too large to stream to a headset or phone, or to store by the thousands. The most compact existing methods rebuild every scene from scratch using its original training photos, which takes tens of minutes per scene and often yields a format that needs its own renderer. Fast feed-forward codecs keep the standard format and need no photos, but code each Gaussian individually and only shrink files 10&ndash;30&times;. Yet a splat is just one of many arrangements of Gaussians that render the same scene. SplatTok learns how scenes are structured from thousands of real-world captures, compresses a whole splat into a compact set of tokens, and regenerates a fresh, standard splat from them &mdash; reaching per-scene compression ratios without the original images.</p>
+            <p>3D Gaussian splats render photorealistic scenes in real time, but a single scene often takes hundreds of megabytes to over a gigabyte &mdash; too large to stream to a headset or phone, or to store by the thousands. The most compact existing methods rebuild every scene from scratch using its original training photos, which takes tens of minutes per scene and often yields a format that needs its own renderer. Fast feed-forward codecs keep the standard format and need no photos, but code each Gaussian individually and only shrink files 10&ndash;30&times;. Yet a splat is just one of many arrangements of Gaussians that render the same scene. SplatTok learns how scenes are structured from thousands of real-world captures, compresses a whole splat into a compact set of tokens, and regenerates a fresh, standard splat from them &mdash; reaching compression ratios comparable to per-scene methods even without the original images.</p>
           </div>
         </div>
       </div>
@@ -124,26 +124,26 @@
   <section class="section">
     <div class="container is-max-desktop">
       <h2 class="title is-3 has-text-centered">Videos</h2>
-      <p class="has-text-centered" style="color:#4a4a4a;">Renders along a camera path from the input splat and from SplatTok reconstructions with 8-bit and 6-bit tokens. Videos in each row play in sync.</p>
+      <p class="has-text-centered" style="color:#4a4a4a;">Renders along a camera path from the input splat and from SplatTok reconstructions with 8-bit and 6-bit tokens, with compressed sizes. Videos in each row play in sync.</p>
         <h3 class="title is-5" style="margin:1.5rem 0 0.5rem;">Bicycle (Mip-NeRF 360)</h3>
         <div class="columns is-variable is-2 video-row">
           <div class="column has-text-centered">
             <video muted loop playsinline preload="none" poster="static/videos/bicycle_input_poster.jpg" style="width:100%;border-radius:4px;">
               <source src="static/videos/bicycle_input.mp4" type="video/mp4">
             </video>
-            <p style="font-size:0.95rem;margin-top:0.25rem;">Input splat</p>
+            <p style="font-size:0.95rem;margin-top:0.25rem;">Input splat &middot; 788 MB</p>
           </div>
           <div class="column has-text-centered">
             <video muted loop playsinline preload="none" poster="static/videos/bicycle_8bit_poster.jpg" style="width:100%;border-radius:4px;">
               <source src="static/videos/bicycle_8bit.mp4" type="video/mp4">
             </video>
-            <p style="font-size:0.95rem;margin-top:0.25rem;">SplatTok (8-bit)</p>
+            <p style="font-size:0.95rem;margin-top:0.25rem;">SplatTok (8-bit) &middot; 10.89 MB</p>
           </div>
           <div class="column has-text-centered">
             <video muted loop playsinline preload="none" poster="static/videos/bicycle_6bit_poster.jpg" style="width:100%;border-radius:4px;">
               <source src="static/videos/bicycle_6bit.mp4" type="video/mp4">
             </video>
-            <p style="font-size:0.95rem;margin-top:0.25rem;">SplatTok (6-bit)</p>
+            <p style="font-size:0.95rem;margin-top:0.25rem;">SplatTok (6-bit) &middot; 7.46 MB</p>
           </div>
         </div>
         <h3 class="title is-5" style="margin:1.5rem 0 0.5rem;">Garden (Mip-NeRF 360)</h3>
@@ -152,19 +152,82 @@
             <video muted loop playsinline preload="none" poster="static/videos/garden_input_poster.jpg" style="width:100%;border-radius:4px;">
               <source src="static/videos/garden_input.mp4" type="video/mp4">
             </video>
-            <p style="font-size:0.95rem;margin-top:0.25rem;">Input splat</p>
+            <p style="font-size:0.95rem;margin-top:0.25rem;">Input splat &middot; 788 MB</p>
           </div>
           <div class="column has-text-centered">
             <video muted loop playsinline preload="none" poster="static/videos/garden_8bit_poster.jpg" style="width:100%;border-radius:4px;">
               <source src="static/videos/garden_8bit.mp4" type="video/mp4">
             </video>
-            <p style="font-size:0.95rem;margin-top:0.25rem;">SplatTok (8-bit)</p>
+            <p style="font-size:0.95rem;margin-top:0.25rem;">SplatTok (8-bit) &middot; 10.89 MB</p>
           </div>
           <div class="column has-text-centered">
             <video muted loop playsinline preload="none" poster="static/videos/garden_6bit_poster.jpg" style="width:100%;border-radius:4px;">
               <source src="static/videos/garden_6bit.mp4" type="video/mp4">
             </video>
-            <p style="font-size:0.95rem;margin-top:0.25rem;">SplatTok (6-bit)</p>
+            <p style="font-size:0.95rem;margin-top:0.25rem;">SplatTok (6-bit) &middot; 7.46 MB</p>
+          </div>
+        </div>
+        <h3 class="title is-5" style="margin:1.5rem 0 0.5rem;">Truck (Tanks and Temples)</h3>
+        <div class="columns is-variable is-2 video-row">
+          <div class="column has-text-centered">
+            <video muted loop playsinline preload="none" poster="static/videos/truck_input_poster.jpg" style="width:100%;border-radius:4px;">
+              <source src="static/videos/truck_input.mp4" type="video/mp4">
+            </video>
+            <p style="font-size:0.95rem;margin-top:0.25rem;">Input splat &middot; 394 MB</p>
+          </div>
+          <div class="column has-text-centered">
+            <video muted loop playsinline preload="none" poster="static/videos/truck_8bit_poster.jpg" style="width:100%;border-radius:4px;">
+              <source src="static/videos/truck_8bit.mp4" type="video/mp4">
+            </video>
+            <p style="font-size:0.95rem;margin-top:0.25rem;">SplatTok (8-bit) &middot; 5.65 MB</p>
+          </div>
+          <div class="column has-text-centered">
+            <video muted loop playsinline preload="none" poster="static/videos/truck_6bit_poster.jpg" style="width:100%;border-radius:4px;">
+              <source src="static/videos/truck_6bit.mp4" type="video/mp4">
+            </video>
+            <p style="font-size:0.95rem;margin-top:0.25rem;">SplatTok (6-bit) &middot; 3.94 MB</p>
+          </div>
+        </div>
+        <h3 class="title is-5" style="margin:1.5rem 0 0.5rem;">Dr Johnson (Deep Blending)</h3>
+        <div class="columns is-variable is-2 video-row">
+          <div class="column has-text-centered">
+            <video muted loop playsinline preload="none" poster="static/videos/drjohnson_input_poster.jpg" style="width:100%;border-radius:4px;">
+              <source src="static/videos/drjohnson_input.mp4" type="video/mp4">
+            </video>
+            <p style="font-size:0.95rem;margin-top:0.25rem;">Input splat &middot; 225 MB</p>
+          </div>
+          <div class="column has-text-centered">
+            <video muted loop playsinline preload="none" poster="static/videos/drjohnson_8bit_poster.jpg" style="width:100%;border-radius:4px;">
+              <source src="static/videos/drjohnson_8bit.mp4" type="video/mp4">
+            </video>
+            <p style="font-size:0.95rem;margin-top:0.25rem;">SplatTok (8-bit) &middot; 3.20 MB</p>
+          </div>
+          <div class="column has-text-centered">
+            <video muted loop playsinline preload="none" poster="static/videos/drjohnson_6bit_poster.jpg" style="width:100%;border-radius:4px;">
+              <source src="static/videos/drjohnson_6bit.mp4" type="video/mp4">
+            </video>
+            <p style="font-size:0.95rem;margin-top:0.25rem;">SplatTok (6-bit) &middot; 2.04 MB</p>
+          </div>
+        </div>
+        <h3 class="title is-5" style="margin:1.5rem 0 0.5rem;">Playroom (Deep Blending)</h3>
+        <div class="columns is-variable is-2 video-row">
+          <div class="column has-text-centered">
+            <video muted loop playsinline preload="none" poster="static/videos/playroom_input_poster.jpg" style="width:100%;border-radius:4px;">
+              <source src="static/videos/playroom_input.mp4" type="video/mp4">
+            </video>
+            <p style="font-size:0.95rem;margin-top:0.25rem;">Input splat &middot; 225 MB</p>
+          </div>
+          <div class="column has-text-centered">
+            <video muted loop playsinline preload="none" poster="static/videos/playroom_8bit_poster.jpg" style="width:100%;border-radius:4px;">
+              <source src="static/videos/playroom_8bit.mp4" type="video/mp4">
+            </video>
+            <p style="font-size:0.95rem;margin-top:0.25rem;">SplatTok (8-bit) &middot; 3.20 MB</p>
+          </div>
+          <div class="column has-text-centered">
+            <video muted loop playsinline preload="none" poster="static/videos/playroom_6bit_poster.jpg" style="width:100%;border-radius:4px;">
+              <source src="static/videos/playroom_6bit.mp4" type="video/mp4">
+            </video>
+            <p style="font-size:0.95rem;margin-top:0.25rem;">SplatTok (6-bit) &middot; 2.04 MB</p>
           </div>
         </div>
     </div>
