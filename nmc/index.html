@@ -97,6 +97,11 @@
   <section class="section">
     <div class="container is-max-desktop">
       <h2 class="title is-3 has-text-centered">Method Overview</h2>
+      <div class="has-text-centered" style="margin-bottom:2rem;">
+        <video controls playsinline preload="metadata" poster="static/method_video_poster.jpg" style="width:100%;border-radius:4px;">
+          <source src="static/method_video.mp4" type="video/mp4">
+        </video>
+      </div>
       <figure class="has-text-centered">
         <img src="static/overview.png" alt="Method Overview" style="width:100%;">
         <figcaption class="has-text-justified" style="margin-top:0.75rem;font-size:0.95rem;color:#4a4a4a;"><b>Encoding (top):</b> the mesh is decimated while successive self-parameterization (SSP) keeps a bijective map to the original surface; the coarse mesh is subdivided, and SSP maps its new vertices onto the original surface to give per-vertex displacement targets for a small MLP. The MLP's weights are pruned, quantized, and entropy coded; together with the coarse mesh they form the compressed representation (67 KB here, from 1.17 MB). <b>Decoding (bottom):</b> the coarse mesh is subdivided the same way and the MLP's predicted displacements are applied to every vertex.</figcaption>
