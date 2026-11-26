@@ -8,7 +8,7 @@
   <meta property="og:title" content="Hierarchical Neural Surfaces for 3D Mesh Compression" />
   <meta property="og:description" content="Compact hierarchical implicit neural representations of genus-0 meshes built on spherical parameterization, decodable to meshes of any resolution in real time." />
   <meta property="og:url" content="https://karthikey97.github.io/hns/" />
-  <meta property="og:image" content="https://karthikey97.github.io/hns/static/teaser.png" />
+  <meta property="og:image" content="https://karthikey97.github.io/hns/static/overview.png" />
   <meta name="keywords" content="mesh compression, implicit neural representations, spherical parameterization, neural geometry processing, PCS 2025">
 
   <title>Hierarchical Neural Surfaces for 3D Mesh Compression</title>
@@ -74,8 +74,8 @@
   <section class="hero teaser">
     <div class="container is-max-desktop">
       <div class="hero-body">
-        <img src="static/teaser.png" alt="teaser" style="width:100%;">
-        <h2 class="subtitle has-text-centered" style="margin-top:0.75rem;font-size:1rem;">Method overview. A mesh is mapped to the unit sphere; a tiny INR models the map from the sphere to a smoothed coarse shape, and a second INR encodes the displacement field that restores fine detail. The two sets of network weights are the compressed representation (here 81.6 KB, 14&times; smaller), and a mesh of any resolution is decoded by pushing an icosphere through both networks.</h2>
+        <img src="static/teaser.gif" alt="teaser" style="width:100%;max-width:420px;display:block;margin:0 auto;">
+        <h2 class="subtitle has-text-centered" style="margin-top:0.75rem;font-size:1rem;">Decoding a mesh from HNS: an icosphere is pushed through the coarse network to recover the overall shape, and the fine network then adds the high-frequency detail.</h2>
       </div>
     </div>
   </section>
@@ -94,6 +94,15 @@
     </div>
   </section>
 
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Method Overview</h2>
+      <figure class="has-text-centered">
+        <img src="static/overview.png" alt="Method Overview" style="width:100%;">
+        <figcaption class="has-text-justified" style="margin-top:0.75rem;font-size:0.95rem;color:#4a4a4a;">A mesh is mapped to the unit sphere; a tiny INR models the map from the sphere to a smoothed coarse shape, and a second INR encodes the displacement field that restores fine detail. The two sets of network weights are the compressed representation (here 81.6 KB, 14&times; smaller), and a mesh of any resolution is decoded by pushing an icosphere through both networks.</figcaption>
+      </figure>
+    </div>
+  </section>
   <section class="section">
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
